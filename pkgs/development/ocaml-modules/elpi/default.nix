@@ -13,7 +13,6 @@
   ncurses,
   ppx_deriving,
   ppx_deriving_0_15,
-  ppx_deriving_0_33,
   ppx_optcomp,
   coqPackages,
   version ?
@@ -95,13 +94,9 @@ buildDunePackage {
   ]
   ++ (if lib.versionAtLeast version "1.15" || version == "dev" then [ menhirLib ] else [ camlp5 ])
   ++ (
-    if lib.versionAtLeast version "2.0.7" || version == "dev" then
+    if lib.versionAtLeast version "1.13" || version == "dev" then
       [
         ppx_deriving
-      ]
-    else if lib.versionAtLeast version "1.13" then
-      [
-        ppx_deriving_0_33
       ]
     else
       [
